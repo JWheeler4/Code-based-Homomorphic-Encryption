@@ -1,0 +1,55 @@
+\chapter{Introduction}
+
+We look at the intersection between code-based cryptography and the problem of constructing a fully homomorphic encryption scheme.
+
+% \begin{figure}
+% \centering
+% \begin{tikzpicture}[scale=2]
+% \node (p1) at (0,0) {$\circ$};
+% \node (p2) at (1,1) {$\circ$};
+% \draw[draw=red,->,thick] (p1) -- (p2);
+% \end{tikzpicture}
+% \caption{Wow, a red directed edge!}
+% \end{figure}
+
+\section{Quantum Computing}
+
+Quantum computing began in 1980 with Benioff proposing a quantum mechanical model of a Turing machine \cite{benioff}. Feynman and Manin later suggested that quantum computers have the potential to simulate things that are not feasible using classical computers \cite{feynman} \cite{manin}. Shor Developed a quantum algorithm for factoring integers in 1994 which has the potential to decrypt RSA-encrypted communications \cite{mermin}. In recent years, investments into quantum computing by both the public and private sectors has increased and on October 23, 2019, Google AI, in partnership with the NASA, claimed to have performed a quantum computation which was infeasible on any classical computer \cite{gibney}.
+
+One of the more notable applications of quantum computation is the ability to use it for attacks on the cryptographic systems that are currently in use. Current public key cryptographic systems make use of the difficulty of computing integer factors of large integers which are the product of a few primes (e.g. an integer which is the product of two 300-digit primes)\cite{lenstra}. A quantum computer could solve this problem efficiently with the use of Shor's algorithm \cite{shor}\cite{beckman}. This means that a quantum computer may break many of the popularly used cryptographic systems of today such as RSA and the Diffie-Hellman key exchange.
+
+This has given rise to the field of post-quantum cryptography.
+
+\subsection{Post-Quantum Cryptography}
+
+Post-quantum cryptography refers to cryptographic algorithms which should be secure\\ against a cryptoanalytic attack made by a quantum computer.
+
+The National Institute of Standards and Technology (NIST) is a physical sciences laboratory and non-regulatory agency of the United States Department of Commerce. NIST currently runs a program and competition known as Post-Quantum Cryptography Standardization in order to update their standards to include post-quantum cryptography. This program was initially announced in 2016, and as of July 22, 2020 seven of the $82$ initially submitted schemes have made it to the third round of the competition.
+
+Five of these schemes are lattice-based. Lattice-based schemes are cryptographic schemes which involve lattices. A lattice, in $\mathbb{R}^n$, is a subgroup of the additive group $\mathbb{R}^n$ which is isomorphic to the additive group $\mathbb{Z}^n$ and spans the real vector space $\mathbb{R}^n$.
+
+One of the schemes was a multivariate scheme. A multivariate scheme is based on multivariate polynomials over a finite field $\mathbb{F}_q$.
+
+The remaining scheme was a code-based scheme known as the McEliece cryptosystem (more specifically a variant of the McEliece cryptosystem known as the Niederreiter Cryptosystem).
+
+\subsubsection{Code-Based Cryptography}
+
+Code-based cryptography includes all cryptosystems whose security relies on the hardness of decoding in a linear code \cite{Sendrier2011}. These linear codes can be chosen with some particular structure or in a specific family (e.g., quasi-cyclic codes, Goppa codes). A linear code is an error-correcting code for which any linear combination of codewords is also a codeword. An error-correcting code is a concept from coding theory, it is a code which is used for controlling errors over noisy communication channels \cite{hamming1950}. In cryptography, the errors are added intentionally as a form of encryption. A codeword is an element of a standardized code which is assembled in accordance with the specific rules of the code and assigned a unique meaning. A code is a system of rules to convert information into another form for communication through a communication channel or storage in a storage medium.
+
+\section{Cloud Computing}
+
+Cloud computing is the on-demand availability of computer system resources. Typically cloud computing is used to provide users with applications such as data storage, referred to as cloud storage, or computing power. Cloud computing allows users to have access to these applications without having to maintain direct active management \cite{cloud2020}.
+
+Cloud computing provides many benefits such as minimizing up-front IT infrastructure costs, allowing enterprises to get their applications up and running faster, improved manageability and less maintenance of applications, enabling IT teams to more rapidly adjust resources to meet fluctuating and unpredictable demand, and providing high computing power at periods of peak demand \cite{simpson}.
+
+However, cloud computing poses privacy concerns because the service provider can access the data that is in the cloud at any time. This means that service providers have the ability to alter or access information which is stored in the cloud \cite{ryan}. Data can be encrypted, but this prevents any cloud based services beyond basic storage from being performed on said data. This is where homomorphic encryption comes in.
+
+\subsection{Homomorphic Encryption}
+
+Homomorphic encryption is a type of encryption that allows users to perform computations on encrypted data without first having to decrypt said data.
+
+For the sake of example, we look at the case where we wish to store data on remote cloud servers and have operations performed on the data within the cloud. Being able to perform operations on the data allows us to do anything to the data that can be efficiently expressed as a circuit (e.g. query it, write into it). However, we do not want to have to download, decrypt, use our resources to perform the operations, re-encrypt, and then re-upload the data because this is impractical. We also do not wish to provide our server hosts with the key to decrypt the data because the data can be sensitive or proprietary. What we want is to use the cloud services processing power to perform the operations for us without giving anyone else access to the decrypted data. This is the idea behind a fully homomorphic encryption scheme.
+
+The notion of constructing a fully homomorphic encryption scheme, originally called a privacy homomorphism, was introduced by Rivest, Adleman, and Dertouzous in 1978, within a year of the publication of the RSA scheme by Rivest, Shamir, and Adleman \cite{rivest1978}. Constructing a fully homomorphic encryption scheme remained an open problem with only partial results until the first solution was proposed by Gentry, using lattice based cryptography, in 2009 \cite{gentry}.
+
+While Gentry's approach provided a solution to the problem, it remained unimplementable due to issues of practicality. As of 2020, there have been four generations of fully homomorphic encryption and we see the approach of a truly implementable fully homomorphic encryption scheme.
